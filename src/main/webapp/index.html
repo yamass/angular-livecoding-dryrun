@@ -7,11 +7,12 @@
 <body>
 
 <!-- In TodoController: this == $scope.todoController  -->
-<div ng-controller="TodoController as todoController">
+<div id="app" ng-controller="TodoController as todoController">
    {{todoController.greeting}}
 </div>
 
 
+<script src="lib/jquery-2.1.4.js"></script>
 <script src="lib/angular-1.4.0-rc.2/angular.js"></script>
 <script>
 
@@ -23,7 +24,7 @@
          this.greeting = 'Welcome!';
       });
 
-   angular.bootstrap(document, ['TodoApp']);
+   angular.bootstrap('#app', ['TodoApp']);
 
 </script>
 
