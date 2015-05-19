@@ -4,11 +4,11 @@
    <meta charset="UTF-8">
    <title></title>
 
-   <style>
-      .todo-done-true {
-         text-decoration: line-through;
-      }
-   </style>
+   <link rel="stylesheet" href="css/styles.css">
+
+   <script src="lib/jquery-2.1.4.js"></script>
+   <script src="lib/angular-1.4.0-rc.2/angular.js"></script>
+   <script src="js/todoApp.js"></script>
 </head>
 <body data-ng-app="TodoApp">
 
@@ -26,31 +26,6 @@
    {{vm.numberOfDoneTodos()}} of {{vm.todos.length}} remaining.
 </div>
 
-
-<script src="lib/jquery-2.1.4.js"></script>
-<script src="lib/angular-1.4.0-rc.2/angular.js"></script>
-<script>
-
-   var app = angular.module('TodoApp', [])
-      .controller('TodoController', function() {
-
-         this.todos = [{
-            title: "Wash car",
-            done: false
-         },{
-            title: "Get a haircut",
-            done: true
-         }];
-
-         this.numberOfDoneTodos = function() {
-            return this.todos.filter(function(todo) {
-               return !(todo.done);
-            }).length;
-         }
-
-      });
-
-</script>
 
 </body>
 </html>
