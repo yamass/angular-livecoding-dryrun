@@ -12,13 +12,18 @@
 </head>
 <body data-ng-app="TodoApp">
 
-<div data-ng-controller="TodoController as todoController">
+<div data-ng-controller="TodoController as vm">
+
+   <h3>TODOs</h3>
+
    <ul>
-      <li data-ng-repeat="todo in todoController.todos">
+      <li data-ng-repeat="todo in vm.todos">
          <input type="checkbox" data-ng-model="todo.done">
          <span class="todo-done-{{todo.done}}">{{todo.title}}</span>
       </li>
    </ul>
+
+   {{vm.numberOfDoneTodos()}} of {{vm.todos.length}} remaining.
 </div>
 
 
@@ -36,6 +41,12 @@
             title: "Get a haircut",
             done: true
          }];
+
+         this.numberOfDoneTodos = function() {
+            return this.todos.filter(function(todo) {
+               return !(todo.done);
+            }).length;
+         }
 
       });
 
