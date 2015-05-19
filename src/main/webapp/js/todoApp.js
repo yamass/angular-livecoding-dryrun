@@ -1,32 +1,35 @@
-var app = angular.module('TodoApp', [])
-        .controller('TodoController', function () {
+var app = angular.module('TodoApp', []);
 
-            this.todos = [{
-                title: "Wash car",
-                done: false
-            }, {
-                title: "Get a haircut",
-                done: true
-            }];
+app.controller('TodoController', function (myValue) {
 
-            function createBlankTodo() {
-                return {
-                    title: "",
-                    done: false
-                }
-            }
+    this.todos = [{
+        title: "Wash car",
+        done: false
+    }, {
+        title: "Get a haircut",
+        done: true
+    }];
 
-            this.newTodo = createBlankTodo();
+    function createBlankTodo() {
+        return {
+            title: "",
+            done: false
+        }
+    }
 
-            this.numberOfDoneTodos = function () {
-                return this.todos.filter(function (todo) {
-                    return !(todo.done);
-                }).length;
-            };
+    this.newTodo = createBlankTodo();
 
-            this.addTodo = function(todo) {
-                this.todos.push(todo);
-                this.newTodo = createBlankTodo();
-            }
+    this.numberOfDoneTodos = function () {
+        return this.todos.filter(function (todo) {
+            return !(todo.done);
+        }).length;
+    };
 
-        });
+    this.addTodo = function (todo) {
+        this.todos.push(todo);
+        this.newTodo = createBlankTodo();
+        console.log(myValue);
+    }
+});
+
+app.value('myValue', "Hey, this is myValue's value!!");
