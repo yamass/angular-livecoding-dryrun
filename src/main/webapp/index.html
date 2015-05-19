@@ -4,10 +4,10 @@
    <meta charset="UTF-8">
    <title></title>
 </head>
-<body>
+<body ng-app="TodoApp">
 
 <!-- In TodoController: this == $scope.todoController  -->
-<div id="app" ng-controller="TodoController as todoController">
+<div ng-controller="TodoController as todoController">
    {{todoController.greeting}}
 </div>
 
@@ -23,8 +23,6 @@
 
          this.greeting = 'Welcome!';
       });
-
-   angular.bootstrap('#app', ['TodoApp']);
 
 </script>
 
