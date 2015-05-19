@@ -6,7 +6,26 @@
 </head>
 <body>
 
-   Hello World!
+<!-- In TodoController: this == $scope.todoController  -->
+<div ng-controller="TodoController as todoController">
+   {{todoController.greeting}}
+</div>
+
+
+<script src="lib/angular-1.4.0-rc.2/angular.js"></script>
+<script>
+
+   var app = angular.module('TodoApp', [])
+      .controller('TodoController', function() {
+
+         // this == $scope.todoController
+
+         this.greeting = 'Welcome!';
+      });
+
+   angular.bootstrap(document, ['TodoApp']);
+
+</script>
 
 </body>
 </html>
