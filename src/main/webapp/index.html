@@ -4,13 +4,13 @@
    <meta charset="UTF-8">
    <title></title>
 </head>
-<body ng-app="TodoApp">
+<body data-ng-app="TodoApp">
 
 <!-- In TodoController: this == $scope.todoController  -->
-<div ng-controller="TodoController as todoController">
+<div data-ng-controller="TodoController as todoController">
    {{todoController.greeting}}
 
-   <input type="text" ng-model="todoController.greeting">
+   <input type="text" data-ng-model="todoController.greeting">
 </div>
 
 
@@ -24,6 +24,8 @@
          // this == $scope.todoController
 
          this.greeting = 'Welcome!';
+
+
       });
 
 </script>
