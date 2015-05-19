@@ -1,0 +1,17 @@
+{
+   "name": "todoApp",
+   "version": "0.0.1",
+   "homepage": "https://github.com/yamass/angular-livecoding-dryrun",
+   "authors": [
+      "Yann"
+   ],
+   "license": "MIT",
+   "dependencies": {
+      "angular":"1.x",
+      "angular-resource":"1.x",
+      "jquery": "1.x"
+   },
+   "devDependencies": {
+
+   }
+}
