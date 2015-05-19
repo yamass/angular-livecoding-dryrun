@@ -1,14 +1,10 @@
 var app = angular.module('TodoApp', []);
 
-app.controller('TodoController', function (myValue) {
+app.controller('TodoController', function (myValue, todoService) {
 
-    this.todos = [{
-        title: "Wash car",
-        done: false
-    }, {
-        title: "Get a haircut",
-        done: true
-    }];
+    var me = this;
+
+    this.todos = todoService.getAll();
 
     function createBlankTodo() {
         return {
@@ -20,16 +16,37 @@ app.controller('TodoController', function (myValue) {
     this.newTodo = createBlankTodo();
 
     this.numberOfDoneTodos = function () {
-        return this.todos.filter(function (todo) {
+        return me.todos.filter(function (todo) {
             return !(todo.done);
         }).length;
     };
 
     this.addTodo = function (todo) {
-        this.todos.push(todo);
+        var persistedTodo = todoService.add(todo);
+        this.todos.push(persistedTodo);
         this.newTodo = createBlankTodo();
-        console.log(myValue);
     }
 });
 
 app.value('myValue', "Hey, this is myValue's value!!");
+
+app.service('todoService', function() {
+
+    var me = this;
+
+    this.getAll = function() {
+        var todos = localStorage.getItem('todos');
+        if (todos) {
+            return JSON.parse(todos);
+        } else {
+            return [];
+        }
+    };
+
+    this.add = function (todo) {
+        var todos = me.getAll();
+        todos.push(todo);
+        localStorage.setItem('todos', JSON.stringify(todos));
+        return todo;
+    }
+});
