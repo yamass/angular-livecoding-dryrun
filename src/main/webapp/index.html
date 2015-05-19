@@ -3,14 +3,22 @@
 <head lang="en">
    <meta charset="UTF-8">
    <title></title>
+
+   <style>
+      .todo-done-true {
+         text-decoration: line-through;
+      }
+   </style>
 </head>
 <body data-ng-app="TodoApp">
 
-<!-- In TodoController: this == $scope.todoController  -->
 <div data-ng-controller="TodoController as todoController">
-   {{todoController.greeting}}
-
-   <input type="text" data-ng-model="todoController.greeting">
+   <ul>
+      <li data-ng-repeat="todo in todoController.todos">
+         <input type="checkbox" data-ng-model="todo.done">
+         <span class="todo-done-{{todo.done}}">{{todo.title}}</span>
+      </li>
+   </ul>
 </div>
 
 
@@ -21,10 +29,13 @@
    var app = angular.module('TodoApp', [])
       .controller('TodoController', function() {
 
-         // this == $scope.todoController
-
-         this.greeting = 'Welcome!';
-
+         this.todos = [{
+            title: "Wash car",
+            done: false
+         },{
+            title: "Get a haircut",
+            done: true
+         }];
 
       });
 
