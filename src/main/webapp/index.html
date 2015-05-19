@@ -24,8 +24,13 @@
    </ul>
 
    {{vm.numberOfDoneTodos()}} of {{vm.todos.length}} remaining.
-</div>
 
+   <form name="addTodoForm" ng-submit="vm.addTodo(vm.newTodo)">
+      <input type="text" name="title" ng-model="vm.newTodo.title" required="true">
+      <input type="submit">
+   </form>
+
+</div>
 
 </body>
 </html>
