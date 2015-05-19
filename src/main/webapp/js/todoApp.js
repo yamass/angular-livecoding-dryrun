@@ -1,14 +1,10 @@
 var app = angular.module('TodoApp', ['todoServices']);
 
-app.controller('TodoController', function ($http) {
+app.controller('TodoController', function ($http, todoResource) {
 
     var me = this;
 
-    me.todos = [];
-
-    $http.get("http://localhost:8080/data/todo").success(function (todosFromServer) {
-        me.todos = todosFromServer;
-    });
+    me.todos = todoResource.query();
 
     function createBlankTodo() {
         return {
@@ -26,12 +22,11 @@ app.controller('TodoController', function ($http) {
     };
 
     this.addTodo = function (todo) {
-        $http.post("http://localhost:8080/data/todo", todo)
-                .success(function (persistedTodo) {
-                    me.todos.push(persistedTodo);
-                    me.newTodo = createBlankTodo();
-                }).error(function () {
-                    console.log("ERROR while writing todo!");
-                });
+        todoResource.save(me.newTodo, function (persistedTodo, responseHeaders) {
+            me.todos.push(persistedTodo);
+            me.newTodo = createBlankTodo();
+        }, function (httpResponse) {
+            console.log("ERROR while writing todo!");
+        });
     }
 });
