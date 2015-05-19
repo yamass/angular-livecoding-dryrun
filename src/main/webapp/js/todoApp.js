@@ -30,23 +30,27 @@ app.controller('TodoController', function (myValue, todoService) {
 
 app.value('myValue', "Hey, this is myValue's value!!");
 
-app.service('todoService', function() {
+app.factory('todoService', function() {
 
-    var me = this;
-
-    this.getAll = function() {
+    function getAll() {
         var todos = localStorage.getItem('todos');
         if (todos) {
             return JSON.parse(todos);
         } else {
             return [];
         }
-    };
+    }
 
-    this.add = function (todo) {
-        var todos = me.getAll();
+    function add(todo) {
+        var todos = getAll();
         todos.push(todo);
         localStorage.setItem('todos', JSON.stringify(todos));
         return todo;
     }
+
+    return {
+        getAll: getAll,
+        add: add
+    };
+
 });
