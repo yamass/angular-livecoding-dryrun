@@ -31,7 +31,7 @@ app.controller('TodoController', ['todoResource', function (todoResource) {
             me.todos.push(persistedTodo);
             me.newTodo = createBlankTodo();
         }, function (httpResponse) {
-            console.log("ERROR while writing todo!");
+            me.errorText = httpResponse.data.message;
         });
     }
 }]);

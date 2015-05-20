@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.yamass.angular.model.Todo;
+import de.yamass.angular.validation.MyValidationException;
 
 @RestController
 @RequestMapping(value = "data/todo")
@@ -28,6 +29,11 @@ public class TodoService {
 
    @RequestMapping(method = RequestMethod.POST)
    public Todo addTodo(@RequestBody Todo todo) {
+
+      if ("hallo".equals(todo.getTitle())) {
+         throw new MyValidationException("Titel darf nicht hallo sein!!");
+      }
+
       int id = idCounter.getAndIncrement();
       todo.setId(id);
       todos.put(id, todo);
