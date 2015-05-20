@@ -17,10 +17,17 @@
   },
   "homepage": "https://github.com/yamass/angular-livecoding-dryrun",
   "devDependencies": {
+     "autoprefixer-core": "5.x",
     "bower": "1.x",
     "gulp": "3.x",
     "gulp-bower": "0.0.10",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.2.0"
+    "gulp-uglify": "^1.2.0",
+     "gulp-watch": "latest",
+     "gulp-postcss": "5.x",
+     "gulp-rename": "1.x",
+     "gulp-sourcemaps": "1.x",
+     "gulp-less": "3.x",
+     "gulp-livereload": "3.x"
   }
 }
