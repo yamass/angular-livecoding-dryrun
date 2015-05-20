@@ -47,10 +47,14 @@
                   </configuration>
                </execution>
                <execution>
-                  <id>bower install</id>
+                  <id>gulp build</id>
                   <goals>
-                     <goal>bower</goal>
+                     <goal>gulp</goal>
                   </goals>
+                  <phase>generate-resources</phase>
+                  <configuration>
+                     <arguments>default</arguments>
+                  </configuration>
                </execution>
             </executions>
          </plugin>

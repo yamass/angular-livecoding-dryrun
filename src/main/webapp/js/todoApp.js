@@ -1,6 +1,6 @@
 var app = angular.module('TodoApp', ['todoServices']);
 
-app.controller('TodoController', function ($http, todoResource) {
+app.controller('TodoController', ['todoResource', function (todoResource) {
 
     var me = this;
 
@@ -29,4 +29,4 @@ app.controller('TodoController', function ($http, todoResource) {
             console.log("ERROR while writing todo!");
         });
     }
-});
+}]);
