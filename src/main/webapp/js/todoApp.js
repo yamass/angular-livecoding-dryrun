@@ -1,5 +1,10 @@
 var app = angular.module('TodoApp', ['todoServices']);
 
+//app.config(function($httpProvider) {
+//    $httpProvider.defaults.xsrfCookieName = 'CSRF-TOKEN';
+//    $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+//});
+
 app.controller('TodoController', ['todoResource', function (todoResource) {
 
     var me = this;
